@@ -1,0 +1,6 @@
+<h1>User info</h1>
+<div>
+  <%= @user.name %>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <p><%= link_to "プロフィ―ル編集", edit_user_path %></p>
+</div>

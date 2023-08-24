@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/1fb06ac57c.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/"><span>Bookers</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li>
+                            <a class="nav-link text-light" href="/">
+                                <i class="fas fa-home" aria-hidden="true"></i> Home
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a class="nav-link text-light" href="/home/about">
+                                <i class="fas fa-link" aria-hidden="true"></i> About
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light" href="/users/sign_up">
+                                <i class="fas fa-user-plus" aria-hidden="true"></i> Sign up
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a class="nav-link text-light" href="/users/sign_in">
+                                <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Log in</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar">
+
+            </div>
+            </div>
+            </navbar>
+            <main>
+                <p id="notice"></p>
+                <div class="container">
+                    <div class="row">
+                        <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+                            <h1>welcome to <i class="fas fa-book" aria-hidden="true"></i><strong>Bookers</strong> !!
+                            </h1>
+                            <p>In <i class="fas fa-book" aria-hidden="true"></i><strong>Bookers</strong>, </p>
+                            <p>you can share and exchange your opinions , inpressions , and emotions</p>
+                            <p> about various books!</p>
+                            <div class="btn-wrapper col-10 mx-auto">
+                                <div class="row">
+                                    <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">Log in</a>
+                                </div>
+                                <div class="row">
+                                    <a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">Sign up</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </main>
+            
+<footer>
+  <div class="container mt-5">
+  	<div class="row">
+    	<div class="mx-auto">
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
+    <%= yield %>
+  </body>
+</html>

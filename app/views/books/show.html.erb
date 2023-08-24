@@ -1,0 +1,12 @@
+<%= render 'bookers', book: @book %>
+
+<h1>Book detail</h1>
+  <div>
+    <p><%= image_tag 'sample-author1.jpg' %></p>
+    <%= link_to book_path(book.id) do %>
+      <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+      <p><%= book.title %></p>
+    <% end %>
+    <p><%= book.body %></p>
+  </div>
+<% end %>

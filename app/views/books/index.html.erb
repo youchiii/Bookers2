@@ -1,0 +1,15 @@
+<%= render 'bookers', books: @book %>
+
+<h1>Book details</h1>
+
+<table class="table table-striped">
+  <% @books.each do |book| %>
+    <div>
+      <%= link_to book_path(book.id) do %>
+      <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+      <p><%= book.title %></p>
+      <% end %>
+      <p><%= book.body %></p>
+    </div>
+  <% end %>
+</table>
