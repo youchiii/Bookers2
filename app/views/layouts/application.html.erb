@@ -13,7 +13,8 @@
 
   <body>
     <body>
-    <header>
+    <% if user_signed_in? %>
+      <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="/"><span>Bookers</span></a>
@@ -24,64 +25,82 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <li>
-                            <a class="nav-link text-light" href="/">
+                            <a class="nav-link text-light" href="<%= user_path(current_user) %>">
                                 <i class="fas fa-home" aria-hidden="true"></i> Home
                             </a>
                         </li>
 
 
                         <li>
-                            <a class="nav-link text-light" href="/home/about">
-                                <i class="fas fa-link" aria-hidden="true"></i> About
+                            <a class="nav-link text-light" href="<%= users_path %>">
+                                <i class="fas fa-users" aria-hidden="true"></i> Users
                             </a>
                         </li>
                         <li>
-                            <a class="nav-link text-light" href="/users/sign_up">
-                                <i class="fas fa-user-plus" aria-hidden="true"></i> Sign up
+                            <a class="nav-link text-light" href="<%= books_path %>">
+                                <i class="fas fa-book-open" aria-hidden="true"></i> Books
                             </a>
                         </li>
 
 
                         <li>
-                            <a class="nav-link text-light" href="/users/sign_in">
-                                <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Log in</a>
+                            <a class="nav-link text-light" href="<%= destroy_user_session_path %> " data-method="delete">
+                                <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Log out</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-            aria-expanded="false" aria-controls="navbar">
-
             </div>
             </div>
             </navbar>
-            <main>
-                <p id="notice"></p>
-                <div class="container">
-                    <div class="row">
-                        <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-                            <h1>welcome to <i class="fas fa-book" aria-hidden="true"></i><strong>Bookers</strong> !!
-                            </h1>
-                            <p>In <i class="fas fa-book" aria-hidden="true"></i><strong>Bookers</strong>, </p>
-                            <p>you can share and exchange your opinions , inpressions , and emotions</p>
-                            <p> about various books!</p>
-                            <div class="btn-wrapper col-10 mx-auto">
-                                <div class="row">
-                                    <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">Log in</a>
-                                </div>
-                                <div class="row">
-                                    <a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">Sign up</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <% else %>
+    <header>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+              <div class="container">
+                  <a class="navbar-brand" href="<%= root_path %>"><span>Bookers</span></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                      <ul class="navbar-nav ml-auto">
+                          <li>
+                              <a class="nav-link text-light" href="<%= root_path %>">
+                                  <i class="fas fa-home" aria-hidden="true"></i> Home
+                              </a>
+                          </li>
 
 
-            </main>
-            
-<footer>
+                          <li>
+                              <a class="nav-link text-light" href="<%= about_path %>">
+                                  <i class="fas fa-link" aria-hidden="true"></i> About
+                              </a>
+                          </li>
+                          <li>
+                              <a class="nav-link text-light" href="<%= new_user_registration_path %>">
+                                  <i class="fas fa-user-plus" aria-hidden="true"></i> Sign up
+                              </a>
+                          </li>
+
+
+                          <li>
+                              <a class="nav-link text-light" href="<%= new_user_session_path %>">
+                                  <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Log in</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+
+              </div>
+              </div>
+              </navbar>
+            </header>
+  <% end %>
+          </header>
+    <%= yield %>
+    <footer>
   <div class="container mt-5">
   	<div class="row">
     	<div class="mx-auto">
@@ -90,6 +109,5 @@
     </div>
   </div>
 </footer>
-    <%= yield %>
   </body>
 </html>

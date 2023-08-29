@@ -1,12 +1,28 @@
-<%= render 'bookers', book: @book %>
+<div class="container">
+  <div class="row">
+<div class="col-md-8"><%= render 'bookers', book: @book_new, user: @user%></div>
 
-<h1>Book detail</h1>
-  <div>
-    <p><%= image_tag 'sample-author1.jpg' %></p>
-    <%= link_to book_path(book.id) do %>
-      <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-      <p><%= book.title %></p>
-    <% end %>
-    <p><%= book.body %></p>
-  </div>
-<% end %>
+
+
+
+
+<div class="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <td><%= link_to user_path(@user.id) do %>
+              <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+              <p><%= @book.title %></p>
+            <% end %></td>
+            
+            <td><%= @book.title %></td>
+            <td><%= @book.body %></td>
+            <td><a class="btn btn-sm btn-success" href="<%= edit_book_path(@book) %>"><i class="edit"></i>Edit</a></td>
+            <td><a data-confirm="本当に消しますか？"class="btn btn-sm btn-danger" rel="nofollow" data-method="delete" href="<%= book_path(@book) %>">Destroy</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+</div>

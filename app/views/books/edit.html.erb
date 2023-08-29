@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <%= form_with model: @book, url: book_path(@book), method: :patch do |f| %>
+      <h1>Editing Book</h1>
+      <p>Title</p>
+      <p><%= f.text_field :title %></p>
+      <p>Opinion</p>
+      <p><%= f.text_area :body %></p>
+      <p><a class="btn btn-success"><%= f.submit 'Update Book' %></a></p>
+
+<% end %>
+    </div>
+  </div>
+</div>
