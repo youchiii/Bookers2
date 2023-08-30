@@ -1,15 +1,33 @@
 <div class="container">
     <div class="row">
+        
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+            <% if@user.errors.any? %>
+                <%= @user.errors.count %>error prohibited this obj from being saved:
+                <ul>
+                    <% @user.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            <% end %>
             <h2>User info</h2>
             <%= form_with model: @user do |f| %>
-                <p><label for="inputName">Name</label></p>
-                <p><%= f.text_field :name, autofocus: true, id:"inputName" %></p>
-                <p><label for="inputImage">Image</label></p>
-                <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></p>
-                <p><label for="inputIntroduction">Introduction</label></p>
-                <p><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction" %></p>
-                <p><%= f.submit "Update User" %><p/>
+                <div class="form_group">
+                    <p><%= f.label :name %></p>
+                    <p><%= f.text_field :name, autofocus: true, id:"inputName" %></p>
+                </div>
+                <div class="form_group">
+                    <p><%= f.label :Image %></p>
+                    <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></p>
+                </div>
+                <div class="form_group">
+                    <p><%= f.label :InputIntroduction %></p>
+                    <p><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction" %></p>
+                </div>
+                <div class="actions">
+                    <p><%= f.submit 'Update User', class: "btn btn-secondary md-3" %></p>
+                </div>
+                </div>
             <% end %>
         </div>
     </div>

@@ -1,6 +1,9 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
+      <% if flash[:notice].present? %>
+          <%= flash[:notice] %>
+      <% end %>
       <%= render 'books/bookers', book: @book ,user: @user%>
     </div>
     <div class="col-md-8 offset-md-1">
@@ -16,16 +19,20 @@
         </thead>
           <tbody>
             <tr>
+              <% @books.each do |book| %>
               <td>
-                <% @books.each do |book| %>
-                <%= link_to book_path(book) do %>
+                <%= link_to user_path(book) do %>
                   <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+              </td>
+              <% end %>
+              <td>
+                <%= link_to book_path(book) do %>
+                  <%= book.title %>
                 <% end %>
               </td>
-              <td><%= book.title %></td>
               <td><%= book.body %></td>
-              <% end %>
             </tr>
+            <% end %>
           </tbody>
       </table>
     </div>
