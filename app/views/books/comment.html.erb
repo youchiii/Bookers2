@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <% if flash[:notice].present? %>
+          <%= flash[:notice] %>
+      <% end %>
+      <%= render 'bookers', book: @book_new, user: @user%>
+    </div>

@@ -4,7 +4,7 @@
       <div class="col-md-3">
         <%= render 'bookers', books: @book, user: @user %>
       </div>
-      
+
       <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
         <table class="table table-striped">
@@ -32,6 +32,20 @@
                   </td>
                   <% end %>
                   <td><p><%= book.body %></p></td>
+                  <td>
+                    <% if book.favorited_by?(current_user) %>
+                      <%= link_to book_favorites_path(book), method: :delete do %>
+                      <span class="fa-solid fa-heart"></span><%= book.favorites.count %>いいね
+                    <% end %>
+                    <% else %>
+                      <%= link_to book_favorites_path(book),method: :post do %>
+                        <span class="fa-regular fa-heart"></span><%= book.favorites.count %>いいね
+                    <% end %>
+                    <% end %>
+                  </td>
+                  <td>
+                    コメント数:<%= book.book_comments.count %>
+                  </td>
               </tr>
               <% end %>
             </tbody>

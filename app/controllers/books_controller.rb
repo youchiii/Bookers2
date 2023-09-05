@@ -16,6 +16,7 @@ before_action :move_to_signed_in
     @book = Book.new
     @user = current_user
     @users = User.all
+    @comments = BookComment.all
     flash[:notice] = "You have created book successfully."
   end
 
@@ -23,6 +24,8 @@ before_action :move_to_signed_in
     @book = Book.find(params[:id])
     @book_new = Book.new
     @user = @book.user
+    @comment = BookComment.new
+    @comments = BookComment.all
   end
 
   def destroy
